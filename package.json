@@ -1,0 +1,33 @@
+{
+  "name": "product-reminder",
+  "version": "1.0.0",
+  "description": "产品到期自动提醒系统",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm run serve",
+    "build": "cd client && npm run build",
+    "start": "node server/index.js",
+    "install-all": "npm install && cd client && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "sqlite3": "^5.1.6",
+    "node-cron": "^3.0.2",
+    "axios": "^1.5.0",
+    "moment": "^2.29.4",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.1"
+  },
+  "keywords": ["product", "reminder", "notification", "enterprise-wechat"],
+  "author": "Your Name",
+  "license": "MIT"
+}

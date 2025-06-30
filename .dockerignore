@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 前端构建文件（会在容器内构建）
+client/dist/
+client/node_modules/
+
+# 开发文件
+.git/
+.gitignore
+*.md
+.env.local
+.env.development
+.env.test
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+logs/
+*.log
+
+# 数据库文件（使用卷挂载）
+*.sqlite
+*.db
+
+# 测试覆盖率
+coverage/
+
+# 缓存目录
+.cache/
+.parcel-cache/
+
+# 临时文件
+.tmp/
+temp/

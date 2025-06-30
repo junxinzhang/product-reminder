@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  product-reminder:
+    build: .
+    container_name: product-reminder
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # 持久化数据库文件
+      - ./data:/app/data
+      # 持久化日志文件
+      - ./logs:/app/logs
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - DATABASE_PATH=/app/data/database.sqlite
+      # 企业微信配置（可选，也可以在Web界面配置）
+      - WECHAT_CORP_ID=
+      - WECHAT_AGENT_ID=
+      - WECHAT_SECRET=
+      - WECHAT_WEBHOOK_URL=
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - product-reminder-network
+
+  # 可选：使用外部数据库（如MySQL）
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: product-reminder-mysql
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: product_reminder
+  #     MYSQL_USER: reminder_user
+  #     MYSQL_PASSWORD: reminder_password
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - product-reminder-network
+
+  # 可选：使用Redis作为缓存
+  # redis:
+  #   image: redis:alpine
+  #   container_name: product-reminder-redis
+  #   restart: unless-stopped
+  #   networks:
+  #     - product-reminder-network
+
+  # 可选：使用Nginx作为反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: product-reminder-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      # SSL证书（如果需要HTTPS）
+      # - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - product-reminder
+    networks:
+      - product-reminder-network
+
+networks:
+  product-reminder-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
