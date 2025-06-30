@@ -29,7 +29,7 @@
 *产品列表页面，支持添加、编辑、删除和搜索功能*
 
 ### 添加产品
-![添加产品](./screenshots/add-product.gif)
+![添加产品](./screenshots/add-product.png)
 
 *演示如何添加新产品的完整流程*
 
