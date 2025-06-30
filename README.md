@@ -66,7 +66,7 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/your-username/product-reminder.git
+   git clone https://github.com/junxinzhange/product-reminder.git
    cd product-reminder
    ```
 
@@ -276,9 +276,9 @@ npm start
 
 如果您在使用过程中遇到问题或有改进建议，请：
 
-1. 查看 [Issues](https://github.com/your-username/product-reminder/issues) 页面
+1. 查看 [Issues](https://github.com/junxinzhange/product-reminder/issues) 页面
 2. 创建新的 Issue 描述问题
-3. 或发送邮件至 your-email@example.com
+3. 或发送邮件至 jason2023zhang@gmail.com
 
 ---
 
